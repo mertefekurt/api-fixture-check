@@ -1,0 +1,1 @@
+fixture user id 123 email test@test.com only happy path no negative case
