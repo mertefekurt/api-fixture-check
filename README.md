@@ -1,41 +1,34 @@
-<img src="assets/readme-cover.svg" alt="API Fixture Check cover" width="100%" />
-
 # API Fixture Check
 
-Audit API test fixtures for realism, identifiers, and brittle values.
+Audit API test fixtures for realism, identifiers, and brittle values. The repository is intentionally plain: a small command, a visible rule surface, and enough examples to make the behavior inspectable.
 
-![stack](https://img.shields.io/badge/stack-Python-dc2626?style=flat-square) ![python](https://img.shields.io/badge/python-3.11-7c3aed?style=flat-square) ![license](https://img.shields.io/badge/license-MIT-0891b2?style=flat-square) ![ci](https://img.shields.io/badge/ci-GitHub%20Actions-b45309?style=flat-square)
+<img src="assets/readme-cover.svg" alt="API Fixture Check cover" width="100%" />
 
-## Workflow
+## Review checklist
 
-1. Collect the review notes or exported records.
-2. Run `api-fixture-check` against the file.
-3. Read the findings in Markdown, or switch to JSON for automation.
-4. Fail CI only at the severity level you care about.
+- [ ] placeholder identity detected (`placeholder-identity`, high)
+- [ ] fixture set lacks negative cases (`happy-path-only`, medium)
+- [ ] timestamp fixture may be brittle (`brittle-timestamp`, low)
 
-## Checks
-
-| Rule | Severity | What it catches |
-| --- | --- | --- |
-| `placeholder-identity` | high | placeholder identity detected |
-| `happy-path-only` | medium | fixture set lacks negative cases |
-| `brittle-timestamp` | low | timestamp fixture may be brittle |
-
-## Command line
+## Command path
 
 ```bash
+git clone https://github.com/mertefekurt/api-fixture-check.git
+cd api-fixture-check
+python -m venv .venv
+source .venv/bin/activate
 python -m pip install -e ".[dev]"
 api-fixture-check examples/sample.txt
-api-fixture-check examples/sample.txt --json --fail-on medium
+api-fixture-check examples/sample.txt --json
 ```
 
-## Sample risky input
+## Fixture worth keeping
 
 ```text
-examples/sample.txt
+
 ```
 
-## Project shape
+## Files I look at first
 
 ```text
 .github/        CI workflow
